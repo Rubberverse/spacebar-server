@@ -1,0 +1,24 @@
+# Example unit, probably doesn't know. Just a boilerplate for now.
+
+[Unit]
+Description=Fermi - Client for Spacebar
+
+[Service]
+Restart=on-failure
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=false
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/rubberverse/spacebar-fermi:latest
+ContainerName=fermi
+# Labels
+AutoUpdate=registry
+NoNewPrivileges=true
+DropCapability=all
+# Network
+Network=Spacebar.network
+# User
+UserNS=auto:size=1002
