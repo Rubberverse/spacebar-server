@@ -1,0 +1,28 @@
+# Example unit, probably doesn't know. Just a boilerplate for now.
+
+[Unit]
+Description=Imagor - Image Proxy for spacebar-server
+
+[Service]
+Restart=on-failure
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=false
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/cshum/imagor:latest
+ContainerName=imagor
+# Environment
+Environment=/home/overseer/Environments/Spacebar/.imgenv
+# Labels
+AutoUpdate=registry
+NoNewPrivileges=true
+DropCapability=all
+ReadOnly=true
+# Network
+Network=Spacebar.network
+# User
+User=1001:1001
+UserNS=auto:size=1002
