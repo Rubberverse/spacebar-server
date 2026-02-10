@@ -1,0 +1,32 @@
+# Example unit, probably doesn't know. Just a boilerplate for now.
+
+[Unit]
+Description=RabbitMQ - Notification broker for spacebar-server
+Requires=SpacebarServer.service
+Before=SpacebarServer.service
+
+[Service]
+Restart=on-failure
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=false
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=public.ecr.aws/docker/library/rabbitmq:4.2.3
+ContainerName=rabbitmq
+# Environment
+Environment=/home/overseer/Environments/Spacebar/.rabbitenv
+# Volumes
+Volume=/home/overseer/Appdata/RabbitMQ:/var/lib/rabbitmq:U,Z
+# Labels
+AutoUpdate=registry
+NoNewPrivileges=true
+DropCapability=all
+ReadOnly=true
+# Network (maybe Pod is better?)
+Network=Spacebar.network
+# User
+User=1001:1001
+UserNS=auto:size=1002
