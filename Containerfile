@@ -63,4 +63,4 @@ RUN chown -Rf ${CONT_USER}:${CONT_USER} /app
 USER    spacebar:spacebar
 VOLUME  /app/configs
 
-ENTRYPOINT node --enable-source-maps /app/spacebar/dist/bundle/start.js
+ENTRYPOINT npm run start
