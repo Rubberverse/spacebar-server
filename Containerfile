@@ -42,7 +42,6 @@ ENV     DEBIAN_FRONTEND="noninteractive" \
         LOG_REQUESTS="-200" \
         WRTC_LIBRARY="mediasoup-spacebar-wrtc"
 
-WORKDIR /app/spacebar
 RUN addgroup \
     --system \
     --gid ${CONT_UID} \
@@ -58,9 +57,10 @@ RUN addgroup \
 
 COPY    --from=spacebar-builder --chmod=0550 /app/src /app/spacebar
 
+WORKDIR /app/spacebar
 RUN chown -Rf ${CONT_USER}:${CONT_USER} /app
 
+USER    spacebar:spacebar
 VOLUME  /app/configs
 
-USER spacebar:spacebar
 ENTRYPOINT node --enable-source-maps /app/spacebar/dist/bundle/start.js
