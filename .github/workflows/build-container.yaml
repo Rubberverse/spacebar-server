@@ -56,5 +56,5 @@ jobs:
           push: true
           file: Containerfile
           tags: |
-            ghcr.io/rubberverse/spacebar-server:latest
-            ghcr.io/rubberverse/spacebar-server:${{ steps.commit.outputs.short }}
+            ghcr.io/rubberverse/spacebar/server:latest
+            ghcr.io/rubberverse/spacebar/server:${{ steps.commit.outputs.short }}
