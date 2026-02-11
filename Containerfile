@@ -56,10 +56,10 @@ RUN addgroup \
 
 COPY    --from=spacebar-builder --chmod=0550 /app/src /app/spacebar
 
-RUN chown -Rf spacebar:spacebar /app
+RUN chown -Rf spacebar:spacebar /app \
+    && ls -la /app
 
 USER    spacebar:spacebar
 WORKDIR /app/spacebar
-VOLUME  /app/configs
 
 ENTRYPOINT node --enable-source-maps /app/spacebar/dist/bundle/start.js
