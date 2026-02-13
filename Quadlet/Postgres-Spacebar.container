@@ -1,7 +1,7 @@
 # Example unit, probably doesn't know. Just a boilerplate for now.
 
 [Unit]
-Description=PostgreSQL for VoidAuth
+Description=PostgreSQL for Spacebar
 Requires=SpacebarServer.service
 Before=SpaceBarServer.service
 Before=RabbitMQ.service
@@ -37,4 +37,3 @@ ReadOnly=true
 Network=Spacebar.network
 # User
 User=999:999
-UserNS=auto:size=1000
