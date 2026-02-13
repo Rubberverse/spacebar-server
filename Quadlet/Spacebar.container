@@ -12,8 +12,8 @@ MemoryDenyWriteExecute=false
 WantedBy=default.target
 
 [Container]
-Image=ghcr.io/rubberverse/spacebarchat-server:latest
-ContainerName=spacebar-chat
+Image=ghcr.io/rubberverse/spacebar/server:latest
+ContainerName=spacebar-server
 # Environment
 EnvironmentFile=/home/overseer/Environments/Spacebar/.env
 # Volumes
@@ -26,5 +26,3 @@ DropCapability=all
 # Network
 Network=Spacebar.network
 PublishPort=3001:3001/tcp
-# User
-UserNS=auto:size=1002
